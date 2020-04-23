@@ -3,6 +3,10 @@ import { Helmet } from 'react-helmet';
 
 // mock
 import auth from '../../constants/auth';
+import heroContent from '../../constants/heroContent';
+
+// components
+import Hero from '../../components/Hero';
 
 function App() {
   return (
@@ -10,8 +14,14 @@ function App() {
       <Helmet
         title={auth.name}
         titleTemplate={`%s | Cermati.com Front-end Developer Entry Test`}
-      />
-      <div>app</div>
+      >
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
+          rel="stylesheet"
+          async
+        />
+      </Helmet>
+      <Hero {...heroContent} />
     </>
   );
 }
