@@ -7,6 +7,7 @@ const Descriptions = styled.p`
   color: ${(props) => props.theme.colors.textWhite};
   line-height: 1.8rem;
   margin: 0rem 0rem;
+  max-width: 500px;
 `;
 
 export default Descriptions;

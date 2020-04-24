@@ -9,10 +9,7 @@ const heroContent = {
   background: backgroundImg,
   headingText: `Hello! I'm ${auth.name}`,
   subHeading: 'Consult, Design, and Develop Websites',
-  descriptions: [
-    `Have something great in mind? Feel free to contact me.`,
-    ` I'll help you to make it happen.`,
-  ],
+  descriptions: `Have something great in mind? Feel free to contact me. I'll help you to make it happen.`,
   withLink: true,
   linkLabel: `let's make contact`,
   linkTo: '/#contact',

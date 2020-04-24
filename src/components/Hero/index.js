@@ -15,9 +15,7 @@ function Hero({
   headingText,
   subHeading,
   descriptions,
-  withLink,
   linkLabel,
-  linkTo,
 }) {
   return (
     <Container background={background}>
@@ -25,9 +23,7 @@ function Hero({
       <ContentWrapper>
         <HeadingText>{headingText}</HeadingText>
         <SubHeadingText>{subHeading}</SubHeadingText>
-        {descriptions.map((text) => (
-          <Descriptions>{text}</Descriptions>
-        ))}
+        <Descriptions>{descriptions}</Descriptions>
         <Button>{linkLabel}</Button>
       </ContentWrapper>
     </Container>
