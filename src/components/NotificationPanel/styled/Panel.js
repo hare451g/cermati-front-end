@@ -2,25 +2,26 @@ import styled from 'styled-components';
 
 const Panel = styled.div`
   background-color: ${(props) => props.theme.colors.background};
-  padding: 1rem;
+  padding: 1rem 0rem;
 
   display: flex;
   flex-direction: row;
 
   justify-content: center;
 
-  position: -webkit-sticky;
   position: sticky;
+  position: --webkit-sticky;
+
   top: 0;
 
   /* When already accepted */
   ${(props) =>
     props.isNotified &&
     `
-    width: 100%;
     position: absolute;
-    top: -400px;
-    transition: 2s;
+    width: 100%;
+    top: -120px;
+    transition: 3s;
   `}
 `;
 

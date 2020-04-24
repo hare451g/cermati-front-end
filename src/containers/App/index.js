@@ -16,7 +16,7 @@ import cookiePolicy from './utils/cookiePolicy';
 
 function App() {
   const [isNotifiedByCookiePolicy, setIsNotifiedByCookiePolicy] = useState(
-    cookiePolicy.isAlreadyNotified()
+    false
   );
 
   const onCookieNotificationClicked = () => {
