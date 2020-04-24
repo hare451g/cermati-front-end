@@ -6,6 +6,7 @@ const theme = {
     foreground: color.charcoal,
     footerBackground: color.deepBlue,
     textWhite: color.offWhite,
+    text: color.charcoal,
     brandColor: color.darkBlue,
     secondaryBrandColor: color.orange,
   },

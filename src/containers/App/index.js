@@ -4,10 +4,12 @@ import { Helmet } from 'react-helmet';
 // mock
 import auth from '../../constants/auth';
 import heroContent from '../../constants/heroContent';
+import highlightPanelContent from '../../constants/highlightPanelContent';
 
 // components
 import Hero from '../../components/Hero';
 import NotificationPanel from '../../components/NotificationPanel';
+import HighlightsPanel from '../../components/HighlightsPanel';
 
 // utils
 import cookiePolicy from './utils/cookiePolicy';
@@ -42,6 +44,7 @@ function App() {
         onNotificationClick={onCookieNotificationClicked}
       />
       <Hero {...heroContent} />
+      <HighlightsPanel {...highlightPanelContent} />
     </>
   );
 }
