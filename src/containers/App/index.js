@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-
 // mock
 import auth from '../../constants/auth';
 import heroContent from '../../constants/heroContent';
 import highlightPanelContent from '../../constants/highlightPanelContent';
+import highlightsCards from '../../constants/highlightsCards';
 
 // components
 import Hero from '../../components/Hero';
 import NotificationPanel from '../../components/NotificationPanel';
 import HighlightsPanel from '../../components/HighlightsPanel';
+import HighlightCardDeck from '../../components/HighlightsCardDeck';
 
 // utils
 import cookiePolicy from './utils/cookiePolicy';
 
 function App() {
   const [isNotifiedByCookiePolicy, setIsNotifiedByCookiePolicy] = useState(
-    false
+    cookiePolicy.isAlreadyNotified() || false
   );
 
   const onCookieNotificationClicked = () => {
@@ -44,7 +45,9 @@ function App() {
         onNotificationClick={onCookieNotificationClicked}
       />
       <Hero {...heroContent} />
-      <HighlightsPanel {...highlightPanelContent} />
+      <HighlightsPanel {...highlightPanelContent}>
+        <HighlightCardDeck cards={highlightsCards} />
+      </HighlightsPanel>
     </>
   );
 }

@@ -7,6 +7,7 @@ const colors = {
   smokeGrey: '#e5e5e5',
   charcoal: '#32343b',
   offWhite: '#F2FDF1',
+  darkGrey: '#606060',
 };
 
 export default colors;

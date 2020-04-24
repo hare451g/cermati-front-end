@@ -7,6 +7,7 @@ const theme = {
     footerBackground: color.deepBlue,
     textWhite: color.offWhite,
     text: color.charcoal,
+    textSecondary: color.darkGrey,
     brandColor: color.darkBlue,
     secondaryBrandColor: color.orange,
   },

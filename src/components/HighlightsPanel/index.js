@@ -19,6 +19,7 @@ function HighlightsPanel({
           {highlightsDescriptions}
         </HighlightsDescriptions>
       </HeaderContainer>
+      {children}
     </Container>
   );
 }
