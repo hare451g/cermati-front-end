@@ -11,6 +11,7 @@ import Hero from '../../components/Hero';
 import NotificationPanel from '../../components/NotificationPanel';
 import HighlightsPanel from '../../components/HighlightsPanel';
 import HighlightCardDeck from '../../components/HighlightsCardDeck';
+import Footer from '../../components/Footer';
 
 // utils
 import cookiePolicy from './utils/cookiePolicy';
@@ -42,14 +43,21 @@ function App() {
           async
         />
       </Helmet>
-      <NotificationPanel
-        isNotified={isNotifiedByCookiePolicy}
-        onNotificationClick={onCookieNotificationClicked}
-      />
-      <Hero {...heroContent} />
-      <HighlightsPanel {...highlightPanelContent}>
-        <HighlightCardDeck cards={highlightsCards} />
-      </HighlightsPanel>
+      <header>
+        <NotificationPanel
+          isNotified={isNotifiedByCookiePolicy}
+          onNotificationClick={onCookieNotificationClicked}
+        />
+      </header>
+      <main>
+        <Hero {...heroContent} />
+        <HighlightsPanel {...highlightPanelContent}>
+          <HighlightCardDeck cards={highlightsCards} />
+        </HighlightsPanel>
+      </main>
+      <footer>
+        <Footer name={auth.name} />
+      </footer>
     </>
   );
 }
