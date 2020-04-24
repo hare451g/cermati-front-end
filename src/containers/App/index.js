@@ -7,6 +7,7 @@ import heroContent from '../../constants/heroContent';
 
 // components
 import Hero from '../../components/Hero';
+import NotificationPanel from '../../components/NotificationPanel';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           async
         />
       </Helmet>
+      <NotificationPanel />
       <Hero {...heroContent} />
     </>
   );
