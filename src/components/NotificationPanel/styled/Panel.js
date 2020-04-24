@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import breakpoints from '../../../configs/breakpoints';
 
 const Panel = styled.div`
   background-color: ${(props) => props.theme.colors.background};
@@ -21,7 +22,12 @@ const Panel = styled.div`
     position: absolute;
     width: 100%;
     top: -120px;
-    transition: 3s;
+    transition: 2s;
+
+    /* Mobile */
+    @media screen and (max-width: ${breakpoints.MOBILE}) {
+      top: -200px;
+    }
   `}
 `;
 

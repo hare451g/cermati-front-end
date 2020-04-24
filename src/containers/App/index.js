@@ -25,7 +25,9 @@ function App() {
   };
 
   useEffect(() => {
-    cookiePolicy.setAlreadyNotified(isNotifiedByCookiePolicy);
+    if (isNotifiedByCookiePolicy) {
+      cookiePolicy.setAlreadyNotified(isNotifiedByCookiePolicy);
+    }
   }, [isNotifiedByCookiePolicy]);
 
   return (
