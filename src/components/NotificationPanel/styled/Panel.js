@@ -12,6 +12,16 @@ const Panel = styled.div`
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+
+  /* When already accepted */
+  ${(props) =>
+    props.isNotified &&
+    `
+    width: 100%;
+    position: absolute;
+    top: -400px;
+    transition: 2s;
+  `}
 `;
 
 export default Panel;

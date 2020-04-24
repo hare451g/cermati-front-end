@@ -6,9 +6,9 @@ import Container from './styled/Container';
 import Button from './styled/Button';
 import Link from './styled/Link';
 
-function NotificationPanel({ isCookieAccepted }) {
+function NotificationPanel({ isNotified, onNotificationClick }) {
   return (
-    <Panel isCookieAccepted={isCookieAccepted}>
+    <Panel isNotified={isNotified}>
       <Container>
         <TextContainer>
           By accessing and using this website, you acknowledge that you have
@@ -17,7 +17,7 @@ function NotificationPanel({ isCookieAccepted }) {
           <Link href="/#privacy-policy">Privacy Policy</Link>, and our{' '}
           <Link href="/#terms-of-service">Terms of Service</Link>.
         </TextContainer>
-        <Button>Got It</Button>
+        <Button onClick={onNotificationClick}>Got It</Button>
       </Container>
     </Panel>
   );

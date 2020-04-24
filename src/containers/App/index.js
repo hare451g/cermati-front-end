@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
 // mock
@@ -9,7 +9,22 @@ import heroContent from '../../constants/heroContent';
 import Hero from '../../components/Hero';
 import NotificationPanel from '../../components/NotificationPanel';
 
+// utils
+import cookiePolicy from './utils/cookiePolicy';
+
 function App() {
+  const [isNotifiedByCookiePolicy, setIsNotifiedByCookiePolicy] = useState(
+    cookiePolicy.isAlreadyNotified()
+  );
+
+  const onCookieNotificationClicked = () => {
+    setIsNotifiedByCookiePolicy(true);
+  };
+
+  useEffect(() => {
+    cookiePolicy.setAlreadyNotified(isNotifiedByCookiePolicy);
+  }, [isNotifiedByCookiePolicy]);
+
   return (
     <>
       <Helmet
@@ -22,7 +37,10 @@ function App() {
           async
         />
       </Helmet>
-      <NotificationPanel />
+      <NotificationPanel
+        isNotified={isNotifiedByCookiePolicy}
+        onNotificationClick={onCookieNotificationClicked}
+      />
       <Hero {...heroContent} />
     </>
   );
