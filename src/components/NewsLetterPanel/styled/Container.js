@@ -7,6 +7,9 @@ const Container = styled.div`
   max-width: 640px;
   padding: 1rem 1rem;
   background-color: rgba(0, 123, 193, 0.85);
+
+  position: fixed;
+  bottom: 0px;
 `;
 
 export default Container;

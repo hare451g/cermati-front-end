@@ -58,12 +58,12 @@ function App() {
         <HighlightsPanel {...highlightPanelContent}>
           <HighlightCardDeck cards={highlightsCards} />
         </HighlightsPanel>
+      </main>
+      <footer>
         <NewsLetterPanel
           isDismissed={isDismissed}
           timeDismissed={timeDismissed}
         />
-      </main>
-      <footer>
         <Footer name={auth.name} />
       </footer>
     </>

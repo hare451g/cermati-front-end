@@ -10,12 +10,14 @@ import Text from "./styled/Text";
 import Input from "./styled/Input";
 import Button from "./styled/Button";
 import InputContainer from './styled/InputContainer';
+import DismissIcon from './styled/DismissIcon';
 
 function NewsLetterPanel({ isDismissed, timeDismissed }) {
   const [email, handleEmailChange] = useFormInput("");
 
   return (
     <Container isDismissed={isDismissed}>
+      <DismissIcon>x</DismissIcon>
       <HeadingText>Get latest updates in web technologies</HeadingText>
       <Text>
         I write articles related to web technologies, such as design trends,
