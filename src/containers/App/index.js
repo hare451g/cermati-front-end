@@ -12,6 +12,7 @@ import NotificationPanel from '../../components/NotificationPanel';
 import HighlightsPanel from '../../components/HighlightsPanel';
 import HighlightCardDeck from '../../components/HighlightsCardDeck';
 import Footer from '../../components/Footer';
+import NewsLetterPanel from '../../components/NewsLetterPanel';
 
 // utils
 import cookiePolicy from './utils/cookiePolicy';
@@ -20,6 +21,9 @@ function App() {
   const [isNotifiedByCookiePolicy, setIsNotifiedByCookiePolicy] = useState(
     cookiePolicy.isAlreadyNotified() || false
   );
+
+  const [isDismissed, setIsDismissed] = useState( false);
+  const [timeDismissed, setTimeDismissed] = useState(null);
 
   const onCookieNotificationClicked = () => {
     setIsNotifiedByCookiePolicy(true);
@@ -54,6 +58,10 @@ function App() {
         <HighlightsPanel {...highlightPanelContent}>
           <HighlightCardDeck cards={highlightsCards} />
         </HighlightsPanel>
+        <NewsLetterPanel
+          isDismissed={isDismissed}
+          timeDismissed={timeDismissed}
+        />
       </main>
       <footer>
         <Footer name={auth.name} />
