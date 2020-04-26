@@ -24,11 +24,7 @@ import reducer from './data/reducer';
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const {
-    isNotifiedByCookiePolicy,
-    isNewsLetterVisible,
-    nextNewsLetterVisibleTime,
-  } = state;
+  const { isNotifiedByCookiePolicy, isNewsLetterVisible } = state;
 
   // scroll event listener
 

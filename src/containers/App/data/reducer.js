@@ -28,7 +28,8 @@ function reducer(state, action) {
       }
 
     case ON_NEWSLETTER_DISMISSED:
-      const nextTenMinutes = new Date().getTime() + 60 * 60 * 10;
+      const TEN_MINUTES = 60 * 1000 * 10;
+      const nextTenMinutes = new Date().getTime() + TEN_MINUTES;
 
       cookiePolicy.setNextNewsLetterVisibleTime(nextTenMinutes);
 

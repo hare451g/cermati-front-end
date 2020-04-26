@@ -13,6 +13,7 @@ const Container = styled.div`
       ? `
       position: fixed;
       bottom: 0px;
+      transition: 2s;
     `
       : `
       position: fixed;
