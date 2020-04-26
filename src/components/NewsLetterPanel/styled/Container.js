@@ -8,8 +8,17 @@ const Container = styled.div`
   padding: 1rem 1rem;
   background-color: rgba(0, 123, 193, 0.85);
 
-  position: fixed;
-  bottom: 0px;
+  ${(props) =>
+    props.isNewsLetterVisible
+      ? `
+      position: fixed;
+      bottom: 0px;
+    `
+      : `
+      position: fixed;
+      transition: 2s;
+      bottom: -2000px;
+    `}
 `;
 
 export default Container;

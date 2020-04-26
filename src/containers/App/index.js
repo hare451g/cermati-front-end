@@ -1,39 +1,55 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import { Helmet } from 'react-helmet';
+
 // mock
 import auth from '../../constants/auth';
-import heroContent from '../../constants/heroContent';
-import highlightPanelContent from '../../constants/highlightPanelContent';
-import highlightsCards from '../../constants/highlightsCards';
 
 // components
-import Hero from '../../components/Hero';
 import NotificationPanel from '../../components/NotificationPanel';
-import HighlightsPanel from '../../components/HighlightsPanel';
-import HighlightCardDeck from '../../components/HighlightsCardDeck';
 import Footer from '../../components/Footer';
 import NewsLetterPanel from '../../components/NewsLetterPanel';
 
 // utils
-import cookiePolicy from './utils/cookiePolicy';
+import HomePage from '../HomePage';
+
+// data
+import { initialState } from './data/constants';
+import {
+  onCookiePolicyClick,
+  onNewsLetterDismissed,
+  onShowNewsLetter,
+} from './data/actions';
+import reducer from './data/reducer';
 
 function App() {
-  const [isNotifiedByCookiePolicy, setIsNotifiedByCookiePolicy] = useState(
-    cookiePolicy.isAlreadyNotified() || false
-  );
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const [isDismissed, setIsDismissed] = useState( false);
-  const [timeDismissed, setTimeDismissed] = useState(null);
+  const {
+    isNotifiedByCookiePolicy,
+    isNewsLetterVisible,
+    nextNewsLetterVisibleTime,
+  } = state;
 
-  const onCookieNotificationClicked = () => {
-    setIsNotifiedByCookiePolicy(true);
-  };
+  // scroll event listener
 
   useEffect(() => {
-    if (isNotifiedByCookiePolicy) {
-      cookiePolicy.setAlreadyNotified(isNotifiedByCookiePolicy);
-    }
-  }, [isNotifiedByCookiePolicy]);
+    const onScrollWatch = () => {
+      const windowHeight = document.documentElement.clientHeight;
+      const scrollHeight = window.pageYOffset;
+
+      const scrollProgress = scrollHeight / windowHeight;
+
+      if (scrollProgress >= 1 / 3 && !isNewsLetterVisible) {
+        dispatch(onShowNewsLetter());
+      }
+    };
+
+    window.addEventListener('scroll', onScrollWatch);
+
+    return () => {
+      window.removeEventListener('scroll', onScrollWatch);
+    };
+  }, [isNewsLetterVisible]);
 
   return (
     <>
@@ -50,19 +66,16 @@ function App() {
       <header>
         <NotificationPanel
           isNotified={isNotifiedByCookiePolicy}
-          onNotificationClick={onCookieNotificationClicked}
+          onNotificationClick={() => dispatch(onCookiePolicyClick())}
         />
       </header>
       <main>
-        <Hero {...heroContent} />
-        <HighlightsPanel {...highlightPanelContent}>
-          <HighlightCardDeck cards={highlightsCards} />
-        </HighlightsPanel>
+        <HomePage />
       </main>
       <footer>
         <NewsLetterPanel
-          isDismissed={isDismissed}
-          timeDismissed={timeDismissed}
+          isNewsLetterVisible={isNewsLetterVisible}
+          onDismissed={() => dispatch(onNewsLetterDismissed())}
         />
         <Footer name={auth.name} />
       </footer>
